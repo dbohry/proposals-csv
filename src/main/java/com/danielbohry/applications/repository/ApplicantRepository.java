@@ -44,7 +44,7 @@ public class ApplicantRepository {
 
       MappingIterator<Applicant> data = mapper.readerFor(Applicant.class)
           .with(schema)
-          .readValues(new File("./src/main/resources/data.csv"));
+          .readValues(new File("./data/data.csv"));
 
       return data.readAll();
     } catch (IOException e) {
