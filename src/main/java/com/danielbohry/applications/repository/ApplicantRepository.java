@@ -10,6 +10,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
 
@@ -43,11 +44,11 @@ public class ApplicantRepository {
 
       MappingIterator<Applicant> data = mapper.readerFor(Applicant.class)
           .with(schema)
-          .readValues(new File("src/main/resources/data.csv"));
+          .readValues(new File("./src/main/resources/data.csv"));
 
       return data.readAll();
-    } catch (IOException exception) {
-      throw new CsvException("Failed to import csv");
+    } catch (IOException e) {
+      throw new CsvException("Failed to import csv", e);
     }
   }
 
