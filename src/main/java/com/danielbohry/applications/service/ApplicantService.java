@@ -15,9 +15,16 @@ public class ApplicantService {
 
   private final ApplicantRepository repository;
 
-  public List<Applicant> getAll(Pageable pageable) {
+  public List<Applicant> get(Pageable pageable) {
     List<Applicant> applicants = new ArrayList<>();
     repository.find(pageable)
+        .forEach(applicants::add);
+    return applicants;
+  }
+
+  public List<Applicant> getDenied(Pageable pageable) {
+    List<Applicant> applicants = new ArrayList<>();
+    repository.findDenied(pageable)
         .forEach(applicants::add);
     return applicants;
   }

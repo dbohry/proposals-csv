@@ -6,11 +6,11 @@ import com.danielbohry.applications.exception.NotFoundException;
 import com.fasterxml.jackson.databind.MappingIterator;
 import com.fasterxml.jackson.dataformat.csv.CsvMapper;
 import com.fasterxml.jackson.dataformat.csv.CsvSchema;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
 
@@ -26,6 +26,10 @@ public class ApplicantRepository {
 
   public Iterable<Applicant> find(Pageable pageable) {
     return dao.findAll(pageable);
+  }
+
+  public Page<Applicant> findDenied(Pageable pageable) {
+    return dao.findAllByWasProposalDenied(pageable, Boolean.TRUE);
   }
 
   public Applicant findById(String id) {

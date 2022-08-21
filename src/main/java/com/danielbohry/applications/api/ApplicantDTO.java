@@ -18,6 +18,8 @@ public class ApplicantDTO {
   private String sex;
   private Long income;
   private String county;
+  private boolean hasCoApplicant;
+  private boolean wasProposalDenied;
 
   public static ApplicantDTO toDto(Applicant bo) {
     return ApplicantDTO.builder()
@@ -27,6 +29,8 @@ public class ApplicantDTO {
         .sex(bo.getSex())
         .income(bo.getIncome())
         .county(bo.getCounty())
+        .hasCoApplicant(bo.getHasCoApplicant())
+        .wasProposalDenied(bo.getWasProposalDenied())
         .build();
   }
 

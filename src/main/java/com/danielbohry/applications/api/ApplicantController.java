@@ -1,9 +1,9 @@
 package com.danielbohry.applications.api;
 
-import com.danielbohry.applications.domain.Applicant;
 import com.danielbohry.applications.service.ApplicantService;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,7 +24,16 @@ public class ApplicantController {
 
   @GetMapping
   public ResponseEntity<List<ApplicantDTO>> get(Pageable pageable) {
-    List<ApplicantDTO> result = service.getAll(pageable).stream()
+    List<ApplicantDTO> result = service.get(pageable).stream()
+        .map(ApplicantDTO::toDto)
+        .collect(toList());
+
+    return ResponseEntity.ok(result);
+  }
+
+  @GetMapping("/denied")
+  public ResponseEntity<List<ApplicantDTO>> getDenied(Pageable pageable) {
+    List<ApplicantDTO> result = service.getDenied(pageable).stream()
         .map(ApplicantDTO::toDto)
         .collect(toList());
 

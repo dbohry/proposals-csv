@@ -33,9 +33,24 @@ public class Applicant {
   @JsonProperty("county_name")
   private String county;
 
+  @JsonProperty("co_applicant_ethnicity_name")
+  private Boolean hasCoApplicant;
+
+  @JsonProperty("denial_reason_name_1")
+  private Boolean wasProposalDenied;
+
   public void setIncome(String income) {
     this.income = Objects.equals(income, "NA")
         ? 0L
         : Long.parseLong(income);
   }
+
+  public void setHasCoApplicant(String coApplicant) {
+    this.hasCoApplicant = coApplicant.contains("No co-applicant");
+  }
+
+  public void setWasProposalDenied(String reason) {
+    this.wasProposalDenied = Objects.equals(reason, "NA");
+  }
+
 }
