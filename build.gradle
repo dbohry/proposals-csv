@@ -4,7 +4,7 @@ plugins {
   id 'java'
 }
 
-group = 'com.danielbohry'
+group = 'com.lhamacorp'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
@@ -26,10 +26,10 @@ dependencies {
   implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-csv:2.13.3'
   implementation 'com.fasterxml.jackson.core:jackson-databind:2.13.3'
   implementation 'org.springdoc:springdoc-openapi-ui:1.6.9'
+
   compileOnly 'org.projectlombok:lombok'
   annotationProcessor 'org.projectlombok:lombok'
   testImplementation 'org.springframework.boot:spring-boot-starter-test'
-
 }
 
 tasks.named('test') {

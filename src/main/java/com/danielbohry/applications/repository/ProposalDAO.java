@@ -8,6 +8,6 @@ public interface ProposalDAO extends PagingAndSortingRepository<ProposalEntity, 
 
   Page<ProposalEntity> findAllByWasProposalDenied(Pageable pageable, Boolean wasProposalDenied);
 
-  Page<ProposalEntity> findAllByEthnicityNotLike(Pageable pageable, String a);
+  Page<ProposalEntity> findAllByEthnicityNot(Pageable pageable, String a);
 
 }
