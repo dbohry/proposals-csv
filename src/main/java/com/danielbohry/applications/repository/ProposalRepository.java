@@ -28,7 +28,7 @@ public class ProposalRepository {
 
   public List<Proposal> find(Pageable pageable) {
     List<Proposal> proposals = new ArrayList<>();
-    dao.findAll(pageable)
+    dao.findAllByEthnicityNotLike(pageable, "Not applicable")
         .forEach(entity -> proposals.add(toBo(entity)));
 
     return proposals;

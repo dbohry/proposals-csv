@@ -10,7 +10,7 @@ public class ProposalConverter {
         .id(entity.getId())
         .applicant(buildApplicant(entity))
         .coApplicant(buildCoApplicant(entity))
-        .income(entity.getIncome())
+        .income(entity.getIncome() != 0 ? entity.getIncome() * 1000 : 0)
         .county(entity.getCounty())
         .wasProposalDenied(entity.getWasProposalDenied())
         .denialReason(entity.getDenialReason())
