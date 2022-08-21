@@ -1,9 +1,9 @@
 package com.danielbohry.applications.api;
 
-import com.danielbohry.applications.service.ApplicantService;
+import com.danielbohry.applications.domain.Proposal;
+import com.danielbohry.applications.service.ProposalService;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,37 +12,28 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-import static com.danielbohry.applications.api.ApplicantDTO.toDto;
-import static java.util.stream.Collectors.toList;
-
 @RestController
-@RequestMapping("applicants")
+@RequestMapping("proposals")
 @AllArgsConstructor
 public class ApplicantController {
 
-  private final ApplicantService service;
+  private final ProposalService service;
 
   @GetMapping
-  public ResponseEntity<List<ApplicantDTO>> get(Pageable pageable) {
-    List<ApplicantDTO> result = service.get(pageable).stream()
-        .map(ApplicantDTO::toDto)
-        .collect(toList());
-
+  public ResponseEntity<List<Proposal>> get(Pageable pageable) {
+    List<Proposal> result = service.get(pageable);
     return ResponseEntity.ok(result);
   }
 
   @GetMapping("/denied")
-  public ResponseEntity<List<ApplicantDTO>> getDenied(Pageable pageable) {
-    List<ApplicantDTO> result = service.getDenied(pageable).stream()
-        .map(ApplicantDTO::toDto)
-        .collect(toList());
-
+  public ResponseEntity<List<Proposal>> getDenied(Pageable pageable) {
+    List<Proposal> result = service.getDenied(pageable);
     return ResponseEntity.ok(result);
   }
 
   @GetMapping("{id}")
-  public ResponseEntity<ApplicantDTO> get(@PathVariable String id) {
-    ApplicantDTO result = toDto(service.get(id));
+  public ResponseEntity<Proposal> get(@PathVariable String id) {
+    Proposal result = service.get(id);
     return ResponseEntity.ok(result);
   }
 
