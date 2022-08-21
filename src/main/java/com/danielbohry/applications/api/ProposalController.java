@@ -15,7 +15,7 @@ import java.util.List;
 @RestController
 @RequestMapping("proposals")
 @AllArgsConstructor
-public class ApplicantController {
+public class ProposalController {
 
   private final ProposalService service;
 
