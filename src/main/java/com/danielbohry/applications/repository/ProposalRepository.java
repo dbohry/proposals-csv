@@ -44,7 +44,7 @@ public class ProposalRepository {
 
   public Proposal findById(String id) {
     ProposalEntity proposal = dao.findById(id)
-        .orElseThrow(() -> new NotFoundException("Not found"));
+        .orElseThrow(() -> new NotFoundException("Resource not found"));
 
     return toBo(proposal);
   }
@@ -64,7 +64,7 @@ public class ProposalRepository {
 
       return data.readAll();
     } catch (IOException e) {
-      throw new CsvException("Failed to import csv", e);
+      throw new CsvException("Impossible to import data from csv", e);
     }
   }
 
