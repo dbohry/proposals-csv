@@ -1,4 +1,4 @@
-# applications
+# proposals-csv
 
 This project was created as some use case sample for extracting information from a CSV file and exposing it with a Rest API.
 
