@@ -37,6 +37,8 @@ public class Applicant {
   private Boolean hasCoApplicant;
 
   @JsonProperty("denial_reason_name_1")
+  private String denialReason;
+
   private Boolean wasProposalDenied;
 
   public void setIncome(String income) {
@@ -49,8 +51,9 @@ public class Applicant {
     this.hasCoApplicant = coApplicant.contains("No co-applicant");
   }
 
-  public void setWasProposalDenied(String reason) {
-    this.wasProposalDenied = Objects.equals(reason, "NA");
+  public void setDenialReason(String reason) {
+    this.denialReason = reason.equals("NA") ? null : reason;
+    this.wasProposalDenied = !Objects.equals(reason, "NA");
   }
 
 }
