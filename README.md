@@ -12,3 +12,7 @@ GET /proposals/{id}
 GET /proposals/denied
 GET /proposals/count
 ```
+
+### Requirements
+
+Java 11 or higher
