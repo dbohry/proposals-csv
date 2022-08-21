@@ -22,14 +22,12 @@ public class ControllerExceptionHandler extends ResponseEntityExceptionHandler {
 
   @ExceptionHandler(value = {CsvException.class})
   protected ResponseEntity<Object> handleCsvError(RuntimeException ex, WebRequest request) {
-    String message = "Impossible to import data from csv";
-    return handleExceptionInternal(ex, message, new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR, request);
+    return handleExceptionInternal(ex, ex.getMessage(), new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR, request);
   }
 
   @ExceptionHandler(value = {NotFoundException.class})
   protected ResponseEntity<Object> handleNotFound(RuntimeException ex, WebRequest request) {
-    String message = "Resource not found";
-    return handleExceptionInternal(ex, message, new HttpHeaders(), HttpStatus.NOT_FOUND, request);
+    return handleExceptionInternal(ex, ex.getMessage(), new HttpHeaders(), HttpStatus.NOT_FOUND, request);
   }
 
 }

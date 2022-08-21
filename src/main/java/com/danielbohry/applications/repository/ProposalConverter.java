@@ -26,7 +26,7 @@ public class ProposalConverter {
   }
 
   private static Applicant buildCoApplicant(ProposalEntity entity) {
-    if (entity.getCoEthnicity().equals("No co-applicant")) {
+    if (entity.getCoEthnicity() == null || entity.getCoEthnicity().equals("No co-applicant")) {
       return null;
     }
 
